@@ -10,11 +10,8 @@ import Foundation
 
 class DataChart {
     
-    
     var time: Double = 0
     var value: Double = 0
-    
-    
 }
 
 

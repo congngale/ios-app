@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0516B16C22153EC900DB0B3E /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0516B16B22153EC900DB0B3E /* Data.swift */; };
 		0516B16F22153EE500DB0B3E /* DataChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0516B16E22153EE500DB0B3E /* DataChart.swift */; };
 		05250AFE221536C300366358 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05250AFD221536C300366358 /* AppDelegate.swift */; };
 		05250B00221536C300366358 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05250AFF221536C300366358 /* ViewController.swift */; };
@@ -20,7 +19,6 @@
 
 /* Begin PBXFileReference section */
 		021997BF200F2E9BADA6E1C3 /* Pods-NetworkingAss1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkingAss1.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkingAss1/Pods-NetworkingAss1.release.xcconfig"; sourceTree = "<group>"; };
-		0516B16B22153EC900DB0B3E /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		0516B16E22153EE500DB0B3E /* DataChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataChart.swift; sourceTree = "<group>"; };
 		05250AFA221536C300366358 /* NetworkingAss1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingAss1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05250AFD221536C300366358 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 			children = (
 				05250B01221536C300366358 /* Main.storyboard */,
 				05250B06221536C400366358 /* LaunchScreen.storyboard */,
-				0516B16B22153EC900DB0B3E /* Data.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,7 +220,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NetworkingAss1/Pods-NetworkingAss1-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -232,7 +232,10 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -249,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				05250B00221536C300366358 /* ViewController.swift in Sources */,
-				0516B16C22153EC900DB0B3E /* Data.swift in Sources */,
 				05250AFE221536C300366358 /* AppDelegate.swift in Sources */,
 				0516B16F22153EE500DB0B3E /* DataChart.swift in Sources */,
 			);

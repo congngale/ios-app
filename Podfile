@@ -10,6 +10,8 @@ pod 'Firebase/Core'
 pod 'Charts'
 pod 'Firebase'
 pod 'Firebase/Database'
-
+pod 'CocoaMQTT'
+pod 'CocoaAsyncSocket'
+pod 'SwiftyJSON'
 
 end

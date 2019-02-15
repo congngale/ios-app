@@ -8,6 +8,9 @@
 
 import UIKit
 import Charts
+import CocoaMQTT
+import CocoaAsyncSocket
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
@@ -23,6 +26,8 @@ class ViewController: UIViewController {
     var lineChartEntry  = [ChartDataEntry]()
     var arrayData = [DataChart]()
     var line = LineChartDataSet()
+    var mqtt: CocoaMQTT?
+    let data = DataChart()
     
     //MARK: - ViewDidLoad()
     override func viewDidLoad() {
@@ -32,6 +37,7 @@ class ViewController: UIViewController {
         btnSetThreshold.layer.cornerRadius = 4
         axisFormatDelegate = self
         draw()
+        mqttSetting()
     }
     
     //MARK: - Button Set Threshold Function
@@ -76,9 +82,6 @@ class ViewController: UIViewController {
         var tmpTime =  Double(Calendar.current.component(.second, from: date))
         arrayData.removeAll()
         for _ in 0 ..< 50 {
-            
-            let data = DataChart()
-            data.value = Double(Int.random(in: 100 ... 1000))
             data.time = tmpTime
             arrayData.append(data)
             tmpTime += 5
@@ -117,6 +120,22 @@ class ViewController: UIViewController {
         lineChart.doubleTapToZoomEnabled = false
         lineChart.pinchZoomEnabled = false
     }
+    //MARK: -MQTT connect
+    func mqttSetting() {
+        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
+        print(clientID)
+        mqtt = CocoaMQTT(clientID: clientID, host: "m16.cloudmqtt.com", port: 17245)
+        mqtt!.username = "abgwsudg"
+        mqtt!.password = "Fcz6bH0Q5XIL"
+        mqtt!.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
+        mqtt!.keepAlive = 60
+        mqtt!.delegate = self
+        mqtt!.connect()
+    }
+    
+    
+    
+  
 }
 
 // MARK: - extension Date Format for xAxis
@@ -128,6 +147,56 @@ extension ViewController: IAxisValueFormatter {
         dateFormatter.dateFormat = "ss"
         return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
+}
+
+extension ViewController: CocoaMQTTDelegate {
+    func mqttDidPing(_ mqtt: CocoaMQTT) {
+        
+    }
+    
+    func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
+        
+    }
+    
+    func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
+        
+    }
+    
+    
+    func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
+        
+        mqtt.subscribe("net/gateway/#")
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
+        
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
+        
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
+        if let myMessage = message.string {
+            print(myMessage)
+        }
+        
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopic topic: String) {
+        
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
+        
+    }
+    
+    func parseMessage(json: JSON) {
+            data.value = json["data"].double!
+    }
+    
+    
+    
 }
 
 
