@@ -42,12 +42,18 @@ class ViewController: UIViewController {
         var myTextField = UITextField()
         let alert = UIAlertController(title: "Enter Threshold Value", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            if myTextField.text == "nil" {
+                self.lineChart.leftAxis.removeAllLimitLines()
+                self.lineChart.animate(yAxisDuration: 0.00001)
+                self.thresholdLabel.text = "THRESHOLD : 0"
+            } else {
+                self.thresholdValue = Double(myTextField.text!)!
+                self.limitLine = ChartLimitLine(limit: self.thresholdValue)
+                self.lineChart.leftAxis.addLimitLine(self.limitLine)
+                self.lineChart.animate(yAxisDuration: 0.00001)
+                self.thresholdLabel.text = "THRESHOLD : \(self.thresholdValue)"
+            }
             
-            self.thresholdValue = Double(myTextField.text!)!
-            self.limitLine = ChartLimitLine(limit: self.thresholdValue)
-            self.lineChart.leftAxis.addLimitLine(self.limitLine)
-            self.lineChart.animate(yAxisDuration: 0.00001)
-            self.thresholdLabel.text = "THRESHOLD : \(self.thresholdValue)"
             
             }
         alert.addTextField { (textField) in
