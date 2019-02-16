@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        btnDraw.layer.cornerRadius = 4
         btnSetThreshold.layer.cornerRadius = 4
         axisFormatDelegate = self
 //        draw()

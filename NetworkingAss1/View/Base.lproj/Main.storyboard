@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad12_9" orientation="landscape">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,34 +15,36 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NetworkingAss1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ve4-mS-18w" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="102" width="1366" height="922"/>
+                                <rect key="frame" x="0.0" y="82" width="667" height="293"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idp-Y2-haw">
-                                <rect key="frame" x="1233" y="42" width="113" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LUMIANCE LINE CHART" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUd-KF-gaf">
+                                <rect key="frame" x="56" y="6" width="296" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                <color key="textColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THRESHOLD: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-ba-Ph7">
+                                <rect key="frame" x="98" y="46" width="211" height="28"/>
                                 <color key="backgroundColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="aT6-8m-EKt"/>
-                                    <constraint firstAttribute="width" constant="113" id="qmp-Lm-T0X"/>
+                                    <constraint firstAttribute="width" constant="211" id="BDb-5e-OnH"/>
+                                    <constraint firstAttribute="height" constant="28" id="re6-Xj-3yk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
-                                <state key="normal" title="DRAW">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnDrawPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VvH-TI-Xlp"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6G9-Jw-cCZ">
-                                <rect key="frame" x="1071" y="42" width="136" height="30"/>
+                                <rect key="frame" x="462" y="22" width="136" height="39"/>
                                 <color key="backgroundColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="136" id="IZE-cQ-gRc"/>
-                                    <constraint firstAttribute="height" constant="30" id="Ps0-a4-NV8"/>
+                                    <constraint firstAttribute="height" constant="39" id="wTy-Hl-Vx7"/>
+                                    <constraint firstAttribute="width" constant="136" id="wwj-z5-Fws"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal" title="SET THRESHOLD">
@@ -52,45 +54,25 @@
                                     <action selector="btnSetThresholdPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="osd-xi-8HC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LUMIANCE LINE CHART" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUd-KF-gaf">
-                                <rect key="frame" x="56" y="6" width="296" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                                <color key="textColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THRESHOLD: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-ba-Ph7">
-                                <rect key="frame" x="98" y="66" width="211" height="28"/>
-                                <color key="backgroundColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="3lo-Zn-pC6"/>
-                                    <constraint firstAttribute="width" constant="211" id="v84-7o-qAc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6G9-Jw-cCZ" firstAttribute="baseline" secondItem="idp-Y2-haw" secondAttribute="baseline" id="1TL-X4-Pr0"/>
-                            <constraint firstItem="tCS-ba-Ph7" firstAttribute="top" secondItem="IUd-KF-gaf" secondAttribute="bottom" constant="4" id="3Io-Wm-0Va"/>
-                            <constraint firstItem="Ve4-mS-18w" firstAttribute="top" secondItem="tCS-ba-Ph7" secondAttribute="bottom" constant="8" symbolic="YES" id="5hD-Oz-3tB"/>
-                            <constraint firstItem="Ve4-mS-18w" firstAttribute="top" secondItem="6G9-Jw-cCZ" secondAttribute="bottom" constant="30" id="G42-VB-M89"/>
-                            <constraint firstItem="IUd-KF-gaf" firstAttribute="centerX" secondItem="tCS-ba-Ph7" secondAttribute="centerX" id="I5l-lP-JES"/>
-                            <constraint firstItem="IUd-KF-gaf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="K0w-dT-Ve4"/>
-                            <constraint firstItem="idp-Y2-haw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="QWw-br-DZK"/>
-                            <constraint firstItem="idp-Y2-haw" firstAttribute="leading" secondItem="6G9-Jw-cCZ" secondAttribute="trailing" constant="26" id="UtL-40-JL0"/>
-                            <constraint firstItem="tCS-ba-Ph7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="98" id="VSr-Og-wsD"/>
-                            <constraint firstAttribute="trailing" secondItem="Ve4-mS-18w" secondAttribute="trailing" id="Y1g-7M-Mcw"/>
-                            <constraint firstItem="IUd-KF-gaf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="bBS-VU-VaZ"/>
-                            <constraint firstItem="Ve4-mS-18w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gJp-dT-jDh"/>
-                            <constraint firstItem="6G9-Jw-cCZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="nnN-Tn-jDW"/>
-                            <constraint firstItem="Ve4-mS-18w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yzv-pF-aC0"/>
+                            <constraint firstItem="IUd-KF-gaf" firstAttribute="centerX" secondItem="tCS-ba-Ph7" secondAttribute="centerX" id="1oj-Lc-5Yt"/>
+                            <constraint firstItem="IUd-KF-gaf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="38x-gF-kgx"/>
+                            <constraint firstItem="tCS-ba-Ph7" firstAttribute="top" secondItem="IUd-KF-gaf" secondAttribute="bottom" constant="4" id="5Id-YR-tyF"/>
+                            <constraint firstItem="Ve4-mS-18w" firstAttribute="top" secondItem="6G9-Jw-cCZ" secondAttribute="bottom" constant="21" id="Es6-p4-Do9"/>
+                            <constraint firstAttribute="trailing" secondItem="Ve4-mS-18w" secondAttribute="trailing" id="Gdb-2P-Uw4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6G9-Jw-cCZ" secondAttribute="trailing" constant="69" id="JjK-En-b36"/>
+                            <constraint firstItem="Ve4-mS-18w" firstAttribute="top" secondItem="tCS-ba-Ph7" secondAttribute="bottom" constant="8" symbolic="YES" id="LSm-8N-zSI"/>
+                            <constraint firstItem="Ve4-mS-18w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WN7-1B-ocZ"/>
+                            <constraint firstItem="6G9-Jw-cCZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="YiR-TT-M5a"/>
+                            <constraint firstItem="tCS-ba-Ph7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="98" id="b6q-6J-xGQ"/>
+                            <constraint firstItem="IUd-KF-gaf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="dOA-3P-9OH"/>
+                            <constraint firstItem="Ve4-mS-18w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="i9z-9A-j51"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="btnDraw" destination="idp-Y2-haw" id="Gxx-3r-xey"/>
                         <outlet property="btnSetThreshold" destination="6G9-Jw-cCZ" id="IxA-VV-Dmx"/>
                         <outlet property="lineChart" destination="Ve4-mS-18w" id="2aN-Uy-Umx"/>
                         <outlet property="thresholdLabel" destination="tCS-ba-Ph7" id="sKO-1X-qYO"/>
@@ -98,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.14130434782609" y="131.8840579710145"/>
+            <point key="canvasLocation" x="135.38230884557723" y="130.40000000000001"/>
         </scene>
     </scenes>
 </document>
