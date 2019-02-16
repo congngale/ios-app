@@ -28,6 +28,10 @@ class ViewController: UIViewController {
     var line = LineChartDataSet()
     var mqtt: CocoaMQTT?
     let data = DataChart()
+    var arrayMessages = [DataMessage]()
+    let myMessage = DataMessage()
+    var countMessage: Int = 0
+    var tmpTime = 0.0
     
     //MARK: - ViewDidLoad()
     override func viewDidLoad() {
@@ -78,19 +82,21 @@ class ViewController: UIViewController {
     }
     
     func draw() {
-        let date = Date()
-        var tmpTime =  Double(Calendar.current.component(.second, from: date))
-        arrayData.removeAll()
-        for _ in 0 ..< 50 {
-            data.time = tmpTime
-            arrayData.append(data)
-            tmpTime += 5
-            print("---- \(data.value) -- \(data.time)")
-        }
+//        let date = Date()
+//        var tmpTime =  Double(Calendar.current.component(.second, from: date))
+      
         
-        lineChartEntry.removeAll()
-        for i in 0 ..< arrayData.count {
-            let value = ChartDataEntry(x: arrayData[i].time, y: arrayData[i].value)
+//        arrayMessages.removeAll()
+//        for _ in 0 ..< countMessage {
+//            myMessage.time = tmpTime
+//            arrayMessages.append(myMessage)
+//            tmpTime += 5
+//            print("---- \(myMessage.data) -- \(myMessage.time)")
+//        }
+        
+      //  lineChartEntry.removeAll()
+        for i in 0 ..< arrayMessages.count {
+            let value = ChartDataEntry(x: Double(tmpTime), y: Double(arrayMessages[i].data))
            
             lineChartEntry.append(value)
         }
@@ -133,7 +139,17 @@ class ViewController: UIViewController {
         mqtt!.connect()
     }
     
-    
+    func parseMessage(_ json: JSON) {
+        if let result = json["data"].double {
+            myMessage.client_id = json["client_id"].stringValue
+            myMessage.gateway_id = json["gateway_id"].stringValue
+            myMessage.data = result
+            print("Parse successful!")
+        }
+        
+        arrayMessages.append(myMessage)
+        tmpTime += 5
+    }
     
   
 }
@@ -165,7 +181,7 @@ extension ViewController: CocoaMQTTDelegate {
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         
-        mqtt.subscribe("net/gateway/#")
+        mqtt.subscribe("net/gateway/e5f345")
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
@@ -177,9 +193,12 @@ extension ViewController: CocoaMQTTDelegate {
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
-        if let myMessage = message.string {
-            print(myMessage)
+        if let m = message.string {
+            let messageJSON: JSON = JSON.init(parseJSON: m)
+            parseMessage(messageJSON)
+            print("\(messageJSON)")
         }
+        
         
     }
     
@@ -190,10 +209,8 @@ extension ViewController: CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
         
     }
+    //MARK: -JSON Parsing
     
-    func parseMessage(json: JSON) {
-            data.value = json["data"].double!
-    }
     
     
     
