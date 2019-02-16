@@ -16,7 +16,6 @@ class ViewController: UIViewController {
 
     //MARK: - Declare Initial variable
     @IBOutlet weak var btnSetThreshold: UIButton!
-    @IBOutlet weak var btnDraw: UIButton!
     @IBOutlet weak var lineChart: LineChartView!
     @IBOutlet weak var thresholdLabel: UILabel!
     weak var axisFormatDelegate: IAxisValueFormatter?
@@ -40,7 +39,7 @@ class ViewController: UIViewController {
         btnDraw.layer.cornerRadius = 4
         btnSetThreshold.layer.cornerRadius = 4
         axisFormatDelegate = self
-        draw()
+//        draw()
         mqttSetting()
     }
     
@@ -77,27 +76,14 @@ class ViewController: UIViewController {
     }
     
     //MARK: - Button Draw Function
-    @IBAction func btnDrawPress(_ sender: Any) {
-        draw()
-    }
+  
     
     func draw() {
-//        let date = Date()
-//        var tmpTime =  Double(Calendar.current.component(.second, from: date))
-      
-        
-//        arrayMessages.removeAll()
-//        for _ in 0 ..< countMessage {
-//            myMessage.time = tmpTime
-//            arrayMessages.append(myMessage)
-//            tmpTime += 5
-//            print("---- \(myMessage.data) -- \(myMessage.time)")
-//        }
+
         
       //  lineChartEntry.removeAll()
         for i in 0 ..< arrayMessages.count {
             let value = ChartDataEntry(x: Double(tmpTime), y: Double(arrayMessages[i].data))
-           
             lineChartEntry.append(value)
         }
         
@@ -144,11 +130,12 @@ class ViewController: UIViewController {
             myMessage.client_id = json["client_id"].stringValue
             myMessage.gateway_id = json["gateway_id"].stringValue
             myMessage.data = result
+            arrayMessages.append(myMessage)
+            tmpTime += 5
+            draw()
             print("Parse successful!")
+            
         }
-        
-        arrayMessages.append(myMessage)
-        tmpTime += 5
     }
     
   
@@ -209,7 +196,7 @@ extension ViewController: CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
         
     }
-    //MARK: -JSON Parsing
+   
     
     
     
